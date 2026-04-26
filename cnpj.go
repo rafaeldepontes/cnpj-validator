@@ -71,7 +71,7 @@ func isAllSame(s string) bool {
 // sanitize removes any formatting characters and converts to uppercase.
 func sanitize(cnpj string) string {
 	var sb strings.Builder
-	for i := 0; i < len(cnpj); i++ {
+	for i := range len(cnpj) {
 		c := cnpj[i]
 		if c >= '0' && c <= '9' {
 			sb.WriteByte(c)
@@ -87,7 +87,7 @@ func sanitize(cnpj string) string {
 // calculateDigit calculates a check digit based on the weights.
 func calculateDigit(s string, weights []int) int {
 	sum := 0
-	for i := 0; i < len(s); i++ {
+	for i := range len(s) {
 		val := int(s[i]) - ASCII_Number
 		sum += val * weights[i]
 	}
